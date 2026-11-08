@@ -2,9 +2,8 @@ package Modelo;
 
 import Productos.Producto;
 
-// Subclase de Producto: agendas, esferos y otros artículos de papelería
 public class Papeleria extends Producto {
-    private String tamano; // Pequeño, Mediano o Grande
+    private String tamano; 
 
     public Papeleria(String nombre, double precioBase, int stock, String tamano) {
         super(nombre, precioBase, stock);
@@ -14,7 +13,7 @@ public class Papeleria extends Producto {
     public String getTamano() { return tamano; }
     public void setTamano(String tamano) { this.tamano = tamano; }
 
-    // Regla: el tamaño mediano suma $3000 y el grande $6000
+    
     @Override
     public double calcularPrecio() {
         double precio = getPrecioBase();
@@ -32,9 +31,9 @@ public class Papeleria extends Producto {
     }
     @Override
     public String[] tecnicasDisponibles() {
-        return new String[]{"Vinilo", "Grabado"};
+        return new String[]{"DTF", "Serigrafia"};
     }
-    // La papelería se personaliza con vinilo o bordado
+   
     @Override
     public String toString() {
         return super.toString() + " | Tamaño: " + tamano + " | Total: $" + String.format("%,.0f", calcularPrecio());
