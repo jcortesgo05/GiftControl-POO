@@ -18,22 +18,23 @@ public class Accesorio extends Producto {
     @Override
     public double calcularPrecio() {
         double precio = getPrecioBase();
-        if (material.equalsIgnoreCase("Acrílico")) {
-            precio = precio + 2000;
-        } else if (material.equalsIgnoreCase("Metal")) {
-            precio = precio + 4000;
+        if ("Acrílico".equalsIgnoreCase(material) || "Acrilico".equalsIgnoreCase(material)) {
+            precio += 2000;
+        } else if ("Metal".equalsIgnoreCase(material)) {
+            precio += 4000;
         }
         return precio;
     }
 
     @Override
     public String detalle() {
-        return "Accesorio de " + material.toLowerCase();
+        return "Accesorio de " + material.toLowerCasereturn "Accesorio de " + (material != null ? material.toLowerCase() : "material no especificado");
     }
 
     // Los accesorios se personalizan con sublimación o vinilo
     @Override
-    public String[] tecnicasDisponibles() {
-        return new String[] {"Sublimación", "Vinilo"};
+    ublic String toString() {
+        return super.toString() + " | Material: " + material + " | Total: $" + String.format("%,.0f", calcularPrecio());
+    }
     }
 }
