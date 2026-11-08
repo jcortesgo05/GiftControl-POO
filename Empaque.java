@@ -12,23 +12,28 @@ public class Empaque {
     }
 
     public void calcularCosto() {
+        if (material == null || tamano == null || "Sin empaque".equalsIgnoreCase(material)) {
+            this.costo = 0.0;
+            return;
+        }
+
         double costoMaterial = 0;
-        if (material.equals("Caja de cartón")) {
+        if ("Caja de cartón".equalsIgnoreCase(material) || "Caja de carton".equalsIgnoreCase(material)) {
             costoMaterial = 3000;
-        } else if (material.equals("Bolsa de papel")) {
+        } else if ("Bolsa de papel".equalsIgnoreCase(material)) {
             costoMaterial = 1500;
-        } else if (material.equals("Caja de madera")) {
+        } else if ("Caja de madera".equalsIgnoreCase(material)) {
             costoMaterial = 8000;
         }
 
         double costoTamano = 0;
-        if (tamano.equals("Mediano")) {
+        if ("Mediano".equalsIgnoreCase(tamano)) {
             costoTamano = 1000;
-        } else if (tamano.equals("Grande")) {
+        } else if ("Grande".equalsIgnoreCase(tamano)) {
             costoTamano = 2000;
         }
 
-        costo = costoMaterial + costoTamano;
+        this.costo = costoMaterial + costoTamano;
     }
 
     public String getMaterial() { return material; }
@@ -45,7 +50,11 @@ public class Empaque {
 
     public double getCosto() { return costo; }
 
+    @Override
     public String toString() {
+        if ("Sin empaque".equalsIgnoreCase(material)) {
+            return "Sin empaque - $0.0";
+        }
         return material + " (" + tamano + ") - $" + costo;
     }
 }
