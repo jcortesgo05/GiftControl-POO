@@ -2,8 +2,7 @@ package Servicio;
 
 import Modelo.Cupo;
 
-// Matriz de objetos: filas = turnos de trabajo, columnas = días de la semana.
-// Cada posición es un Cupo (L libre, O ocupado, R reservado).
+
 public class AgendaProduccion {
     private static final int FILAS = 3;
     private static final int COLUMNAS = 5;
@@ -26,7 +25,7 @@ public class AgendaProduccion {
     public int getFilas() { return FILAS; }
     public int getColumnas() { return COLUMNAS; }
 
-    // Fila y columna se numeran desde 1, como las ve el usuario
+    
     public boolean posicionValida(int fila, int columna) {
         return fila >= 1 && fila <= FILAS && columna >= 1 && columna <= COLUMNAS;
     }
@@ -35,7 +34,7 @@ public class AgendaProduccion {
         return cupos[fila - 1][columna - 1];
     }
 
-    // Dibuja la cuadrícula en consola
+   
     public String dibujar() {
         String texto = String.format("%-12s", "");
         for (int j = 0; j < COLUMNAS; j++) {
@@ -70,7 +69,7 @@ public class AgendaProduccion {
         return texto;
     }
 
-    // Un cupo libre o reservado se puede ocupar; uno ya ocupado no
+    
     public boolean ocupar(int fila, int columna, String referencia) {
         Cupo cupo = obtenerCupo(fila, columna);
         boolean exito = false;
@@ -81,7 +80,7 @@ public class AgendaProduccion {
         return exito;
     }
 
-    // Solo se puede reservar un cupo libre
+  
     public boolean reservar(int fila, int columna, String referencia) {
         Cupo cupo = obtenerCupo(fila, columna);
         boolean exito = false;
