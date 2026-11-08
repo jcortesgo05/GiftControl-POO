@@ -1,9 +1,9 @@
 package modelo;
 
 public class Personalizacion {
-    private String tecnica;        // Sublimación, Vinilo o Bordado
-    private String tamanoDiseno;   // Pequeño, Mediano o Grande
-    private String tipoContenido;  // Texto, Imagen o Texto e imagen
+    private String tecnica;       
+    private String tamanoDiseno;   
+    private String tipoContenido;  
     private boolean servicioDiseno;
     private String descripcion;
     private double costoAdicional;
@@ -18,36 +18,36 @@ public class Personalizacion {
         calcularCosto();
     }
 
-    // Suma el costo de cada opción elegida
+    
     public void calcularCosto() {
         double costo = 0;
 
-        // Validación de Técnica
+       
         if ("Sublimación".equalsIgnoreCase(tecnica) || "Sublimacion".equalsIgnoreCase(tecnica)) {
-            costo += 5000;
-        } else if ("Vinilo".equalsIgnoreCase(tecnica)) {
-            costo += 7000;
-        } else if ("Bordado".equalsIgnoreCase(tecnica)) {
-            costo += 12000;
-        }
-
-        // Validación de Tamaño
-        if ("Mediano".equalsIgnoreCase(tamanoDiseno)) {
-            costo += 3000;
-        } else if ("Grande".equalsIgnoreCase(tamanoDiseno)) {
-            costo += 6000;
-        }
-
-        // Validación de Tipo de Contenido
-        if ("Imagen".equalsIgnoreCase(tipoContenido)) {
             costo += 4000;
+        } else if ("DTF".equalsIgnoreCase(tecnica)) {
+            costo += 5000;
+        } else if ("Serigrafia".equalsIgnoreCase(tecnica)) {
+            costo += 2500;
+        }
+
+        
+        if ("Mediano".equalsIgnoreCase(tamanoDiseno)) {
+            costo += 2000;
+        } else if ("Grande".equalsIgnoreCase(tamanoDiseno)) {
+            costo += 3000;
+        }
+
+       
+        if ("Imagen".equalsIgnoreCase(tipoContenido)) {
+            costo += 2000;
         } else if ("Texto e imagen".equalsIgnoreCase(tipoContenido) || "Texto e Imagen".equalsIgnoreCase(tipoContenido)) {
-            costo += 6000;
+            costo += 3000;
         }
 
         // Servicio adicional de diseño
         if (servicioDiseno) {
-            costo += 10000;
+            costo += 35000;
         }
 
         this.costoAdicional = costo;
