@@ -3,9 +3,8 @@ import Productos.Producto;
 import Entidades.Proveedor;
 
 public class Inventario {
-    private static final int MAXIMO = 8;
+    private static final int MAXIMO = 20;
 
-    // Un solo arreglo guarda productos de distintas subclases (Accesorio, Papeleria, Textil)
     private Producto[] productos;
     private int cantidadProductos;
     private Proveedor proveedor;
@@ -22,13 +21,12 @@ public class Inventario {
 
     public int getMaximo() { return MAXIMO; }
 
-    // Guarda el producto en la primera posición libre del arreglo
     public void agregarProducto(Producto producto) {
         productos[cantidadProductos] = producto;
         cantidadProductos++;
     }
 
-    // El número va de 1 a cantidadProductos
+
     public Producto obtenerProducto(int numero) {
         Producto resultado = null;
         if (numero >= 1 && numero <= cantidadProductos) {
@@ -53,7 +51,7 @@ public class Inventario {
         }
     }
 
-    // Compara nombres sin importar mayúsculas (para no repetir productos)
+
     public boolean existeNombre(String nombre) {
         boolean existe = false;
         for (int i = 0; i < cantidadProductos; i++) {
@@ -64,8 +62,7 @@ public class Inventario {
         return existe;
     }
 
-    // Buscador: devuelve los productos cuyo nombre o descripción contienen el texto,
-    // sin importar mayúsculas. Si no hay coincidencias devuelve "".
+
     public String buscar(String texto) {
         String buscado = texto.trim().toLowerCase();
         String resultado = "";
@@ -79,7 +76,7 @@ public class Inventario {
         return resultado;
     }
 
-    // Recorre el arreglo y cada producto responde con su propio calcularPrecio()
+
     public double calcularValorInventario() {
         double total = 0;
         for (int i = 0; i < cantidadProductos; i++) {
