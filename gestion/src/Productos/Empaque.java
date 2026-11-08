@@ -1,8 +1,8 @@
 package Productos;
 
 public class Empaque {
-    private String material;  // Caja de cartón, Bolsa de papel, Caja de madera o Sin empaque
-    private String tamano;    // Pequeño, Mediano, Grande o N/A
+    private String material;  
+    private String tamano;    
     private double costo;
 
     public Empaque(String material, String tamano) {
