@@ -1,9 +1,9 @@
 package Productos;
 
 public class Personalizacion {
-    private String tecnica;        // Sublimación, Vinilo o Bordado
-    private String tamanoDiseno;   // Pequeño, Mediano o Grande
-    private String tipoContenido;  // Texto, Imagen o Texto e imagen
+    private String tecnica;        
+    private String tamanoDiseno;   
+    private String tipoContenido;  
     private boolean servicioDiseno;
     private String descripcion;
     private double costoAdicional;
@@ -18,37 +18,37 @@ public class Personalizacion {
         calcularCosto();
     }
 
-    // Costo de cada técnica (también lo usa la tienda para mostrar las opciones)
+   
     public static double costoTecnica(String tecnica) {
         double costo = 0;
         if (tecnica.equals("Sublimación")) {
+            costo = 4000;
+        } else if (tecnica.equals("DTF")) {
             costo = 5000;
-        } else if (tecnica.equals("Vinilo")) {
-            costo = 7000;
-        } else if (tecnica.equals("Bordado")) {
-            costo = 12000;
+        } else if (tecnica.equals("Serigrafia")) {
+            costo = 2500;
         }
         return costo;
     }
 
-    // Suma el costo de cada opción elegida
+    
     public void calcularCosto() {
         double costo = costoTecnica(tecnica);
 
         if (tamanoDiseno.equals("Mediano")) {
-            costo = costo + 3000;
+            costo = costo + 2000;
         } else if (tamanoDiseno.equals("Grande")) {
-            costo = costo + 6000;
+            costo = costo + 3000;
         }
 
         if (tipoContenido.equals("Imagen")) {
-            costo = costo + 4000;
+            costo = costo + 2000;
         } else if (tipoContenido.equals("Texto e imagen")) {
-            costo = costo + 6000;
+            costo = costo + 3000;
         }
 
         if (servicioDiseno) {
-            costo = costo + 10000;
+            costo = costo + 35000;
         }
 
         costoAdicional = costo;
