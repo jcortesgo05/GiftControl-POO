@@ -1,7 +1,6 @@
 package Productos;
 
-// Clase padre abstracta: define lo común a todos los productos del catálogo.
-// Cada subclase sobrescribe calcularPrecio() y detalle() a su manera.
+
 public abstract class Producto {
     private String nombre;
     private double precioBase;
@@ -34,13 +33,11 @@ public abstract class Producto {
         stock = stock - cantidad;
     }
 
-    // Cada tipo de producto calcula su precio con su propia regla
+    
     public abstract double calcularPrecio();
-
-    // Cada tipo de producto describe sus características propias
+ 
     public abstract String detalle();
 
-    // Cada tipo de producto ofrece solo las técnicas de personalización que admite
     public abstract String[] tecnicasDisponibles();
 
     public String toString() {
