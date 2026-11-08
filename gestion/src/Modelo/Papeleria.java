@@ -1,4 +1,6 @@
-package modelo;
+package Modelo;
+
+import Productos.Producto;
 
 // Subclase de Producto: agendas, esferos y otros artículos de papelería
 public class Papeleria extends Producto {

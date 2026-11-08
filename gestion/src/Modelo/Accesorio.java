@@ -1,4 +1,6 @@
-package modelo;
+package Modelo;
+
+import Productos.Producto;
 
 // Subclase de Producto: tazas, llaveros, pocillos y otros accesorios
 public class Accesorio extends Producto {

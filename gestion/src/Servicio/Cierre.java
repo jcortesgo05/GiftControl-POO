@@ -1,4 +1,6 @@
-package Productos;
+package Servicio;
+
+import Productos.RegaloPersonalizado;
 
 public class Cierre {
     private int totalRegalos;
@@ -38,12 +40,12 @@ public class Cierre {
 
     public String toString() {
         String resumen = "\n======= CIERRE DEL DÍA =======\n"
-                + "Regalos vendidos: " + totalRegalos + "\n"
-                + "Unidades vendidas: " + totalUnidades + "\n"
-                + "Total en ventas: $" + totalVentas + "\n"
-                + "Abonos recibidos: $" + totalAbonos + "\n"
-                + "Saldo pendiente por cobrar: $" + totalPendiente + "\n"
-                + "Venta más grande: $" + ventaMayor + "\n";
+            + "Regalos vendidos: " + totalRegalos + "\n"
+            + "Unidades vendidas: " + totalUnidades + "\n"
+            + "Total en ventas: $" + totalVentas + "\n"
+            + "Abonos recibidos: $" + totalAbonos + "\n"
+            + "Saldo pendiente por cobrar: $" + totalPendiente + "\n"
+            + "Venta más grande: $" + ventaMayor + "\n";
         if (totalRegalos > 0) {
             resumen = resumen + "Promedio por venta: $" + (totalVentas / totalRegalos) + "\n";
         }

@@ -1,6 +1,6 @@
-package servicio;
+package Servicio;
 
-import modelo.Cupo;
+import Modelo.Cupo;
 
 // Matriz de objetos: filas = turnos de trabajo, columnas = días de la semana.
 // Cada posición es un Cupo (L libre, O ocupado, R reservado).

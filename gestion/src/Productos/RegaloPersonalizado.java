@@ -1,9 +1,10 @@
 package Productos;
+
 // En este vamos a crear como tal el inventario, tiene la lista de productos y puede buscar poner o quitar productos
 public class RegaloPersonalizado {
     private Producto producto;                // relación: el regalo tiene un producto
     private Personalizacion personalizacion;  // ...una personalización
-    private Empaque empaque;                  // ...y un empaque
+    private Productos.Empaque empaque;                  // ...y un empaque
     private int cantidad;
     private double precioUnitario;
     private double total;
@@ -11,7 +12,7 @@ public class RegaloPersonalizado {
     private double saldoPendiente;
 
     public RegaloPersonalizado(Producto producto, Personalizacion personalizacion,
-                               Empaque empaque, int cantidad) {
+                               Productos.Empaque empaque, int cantidad) {
         this.producto = producto;
         this.personalizacion = personalizacion;
         this.empaque = empaque;
@@ -25,7 +26,7 @@ public class RegaloPersonalizado {
     // Precio por unidad = precio base + personalización + empaque
     public void calcularPrecio() {
         precioUnitario = producto.getPrecioBase()
-                + personalizacion.getCosto()
+                + personalizacion.getCostoAdicional()
                 + empaque.getCosto();
         total = precioUnitario * cantidad;
     }
@@ -46,7 +47,7 @@ public class RegaloPersonalizado {
     public Personalizacion getPersonalizacion() { return personalizacion; }
     public void setPersonalizacion(Personalizacion personalizacion) { this.personalizacion = personalizacion; }
 
-    public Empaque getEmpaque() { return empaque; }
+    public Productos.Empaque getEmpaque() { return empaque; }
     public void setEmpaque(Empaque empaque) { this.empaque = empaque; }
 
     public int getCantidad() { return cantidad; }

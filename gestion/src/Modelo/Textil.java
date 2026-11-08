@@ -1,4 +1,6 @@
-package modelo;
+package Modelo;
+
+import Productos.Producto;
 
 // Subclase de Producto: loncheras, cartucheras, monederos, bolsas y otros textiles
 public class Textil extends Producto {
