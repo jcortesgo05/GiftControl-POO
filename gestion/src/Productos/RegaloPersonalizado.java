@@ -1,10 +1,10 @@
 package Productos;
 
-// En este vamos a crear como tal el inventario, tiene la lista de productos y puede buscar poner o quitar productos
+
 public class RegaloPersonalizado {
-    private Producto producto;                // relación: el regalo tiene un producto
-    private Personalizacion personalizacion;  // ...una personalización
-    private Productos.Empaque empaque;                  // ...y un empaque
+    private Producto producto;                
+    private Personalizacion personalizacion;  
+    private Productos.Empaque empaque;                
     private int cantidad;
     private double precioUnitario;
     private double total;
@@ -23,7 +23,7 @@ public class RegaloPersonalizado {
         this.saldoPendiente = 0;
     }
 
-    // Precio por unidad = precio base + personalización + empaque
+    
     public void calcularPrecio() {
         precioUnitario = producto.getPrecioBase()
                 + personalizacion.getCostoAdicional()
@@ -31,7 +31,7 @@ public class RegaloPersonalizado {
         total = precioUnitario * cantidad;
     }
 
-    // Regla: el abono mínimo es el 30% del total
+   
     public double calcularAbonoMinimo() {
         return total * 30 / 100;
     }
