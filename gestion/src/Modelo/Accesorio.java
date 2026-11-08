@@ -2,9 +2,8 @@ package Modelo;
 
 import Productos.Producto;
 
-// Subclase de Producto: tazas, llaveros, pocillos y otros accesorios
 public class Accesorio extends Producto {
-    private String material; // Cerámica, Acrílico o Metal
+    private String material; 
 
     public Accesorio(String nombre, double precioBase, int stock, String material) {
         super(nombre, precioBase, stock);
@@ -14,14 +13,14 @@ public class Accesorio extends Producto {
     public String getMaterial() { return material; }
     public void setMaterial(String material) { this.material = material; }
 
-    // Regla: el acrílico suma $2000 y el metal $4000 al precio base
+    
     @Override
     public double calcularPrecio() {
         double precio = getPrecioBase();
         if ("Acrílico".equalsIgnoreCase(material) || "Acrilico".equalsIgnoreCase(material)) {
             precio += 2000;
         } else if ("Metal".equalsIgnoreCase(material)) {
-            precio += 4000;
+            precio += 3000;
         }
         return precio;
     }
@@ -31,11 +30,10 @@ public class Accesorio extends Producto {
         return "Accesorio de " + (material != null ? material.toLowerCase() : "material no especificado");
     }
 
-    // Los accesorios se personalizan con sublimación o vinilo
-
+    
     @Override
     public String[] tecnicasDisponibles() {
-        return new String[]{"Sublimación", "Vinilo"};
+        return new String[]{"Sublimación", "DTF"};
     }
 
 
