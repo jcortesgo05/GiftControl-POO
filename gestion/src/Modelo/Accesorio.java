@@ -1,4 +1,6 @@
-package modelo;
+package Modelo;
+
+import Productos.Producto;
 
 // Subclase de Producto: tazas, llaveros, pocillos y otros accesorios
 public class Accesorio extends Producto {
@@ -26,13 +28,15 @@ public class Accesorio extends Producto {
 
     @Override
     public String detalle() {
-        return "Accesorio de " + material.toLowerCasereturn "Accesorio de " + (material != null ? material.toLowerCase() : "material no especificado");
+        return "Accesorio de " + (material != null ? material.toLowerCase() : "material no especificado");
     }
 
     // Los accesorios se personalizan con sublimación o vinilo
+
     @Override
-    ublic String toString() {
-        return super.toString() + " | Material: " + material + " | Total: $" + String.format("%,.0f", calcularPrecio());
+    public String[] tecnicasDisponibles() {
+        return new String[]{"Sublimación", "Vinilo"};
     }
-    }
+
+
 }

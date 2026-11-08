@@ -1,69 +1,38 @@
 package Inventario;
 import Productos.Producto;
 import Entidades.Proveedor;
+
 public class Inventario {
-    private Producto producto1;
-    private Producto producto2;
-    private Producto producto3;
-    private Producto producto4;
-    private Producto producto5;
-    private Producto producto6;
-    private Producto producto7;
-    private Producto producto8;
+    private static final int MAXIMO = 8;
+
+    // Un solo arreglo guarda productos de distintas subclases (Accesorio, Papeleria, Textil)
+    private Producto[] productos;
     private int cantidadProductos;
     private Proveedor proveedor;
 
     public Inventario() {
-        producto1 = null;
-        producto2 = null;
-        producto3 = null;
-        producto4 = null;
-        producto5 = null;
-        producto6 = null;
-        producto7 = null;
-        producto8 = null;
+        productos = new Producto[MAXIMO];
         cantidadProductos = 0;
         proveedor = null;
     }
 
     public boolean hayEspacio() {
-        return cantidadProductos < 8;
+        return cantidadProductos < MAXIMO;
     }
 
-    // Guarda el producto en la primera variable libre
-    public void agregarProducto(Producto producto) {
-        if (cantidadProductos == 0) {
-            producto1 = producto;
-        } else if (cantidadProductos == 1) {
-            producto2 = producto;
-        } else if (cantidadProductos == 2) {
-            producto3 = producto;
-        } else if (cantidadProductos == 3) {
-            producto4 = producto;
-        } else if (cantidadProductos == 4) {
-            producto5 = producto;
-        } else if (cantidadProductos == 5) {
-            producto6 = producto;
-        } else if (cantidadProductos == 6) {
-            producto7 = producto;
-        } else if (cantidadProductos == 7) {
-            producto8 = producto;
-        }
+    public int getMaximo() { return MAXIMO; }
 
+    // Guarda el producto en la primera posición libre del arreglo
+    public void agregarProducto(Producto producto) {
+        productos[cantidadProductos] = producto;
         cantidadProductos++;
     }
 
+    // El número va de 1 a cantidadProductos
     public Producto obtenerProducto(int numero) {
         Producto resultado = null;
-        switch (numero) {
-            case 1: resultado = producto1; break;
-            case 2: resultado = producto2; break;
-            case 3: resultado = producto3; break;
-            case 4: resultado = producto4; break;
-            case 5: resultado = producto5; break;
-            case 6: resultado = producto6; break;
-            case 7: resultado = producto7; break;
-            case 8: resultado = producto8; break;
+        if (numero >= 1 && numero <= cantidadProductos) {
+            resultado = productos[numero - 1];
         }
         return resultado;
     }
@@ -84,47 +53,51 @@ public class Inventario {
         }
     }
 
-    public int getCantidadProductos() { return cantidadProductos; }
+    // Compara nombres sin importar mayúsculas (para no repetir productos)
+    public boolean existeNombre(String nombre) {
+        boolean existe = false;
+        for (int i = 0; i < cantidadProductos; i++) {
+            if (productos[i].getNombre().equalsIgnoreCase(nombre.trim())) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
 
-    public Producto getProducto1() { return producto1; }
-    public Producto getProducto2() { return producto2; }
-    public Producto getProducto3() { return producto3; }
-    public Producto getProducto4() { return producto4; }
-    public Producto getProducto5() { return producto5; }
-    public Producto getProducto6() { return producto6; }
-    public Producto getProducto7() { return producto7; }
-    public Producto getProducto8() { return producto8; }
+    // Buscador: devuelve los productos cuyo nombre o descripción contienen el texto,
+    // sin importar mayúsculas. Si no hay coincidencias devuelve "".
+    public String buscar(String texto) {
+        String buscado = texto.trim().toLowerCase();
+        String resultado = "";
+        for (int i = 0; i < cantidadProductos; i++) {
+            Producto p = productos[i];
+            if (p.getNombre().toLowerCase().contains(buscado)
+                    || p.detalle().toLowerCase().contains(buscado)) {
+                resultado = resultado + (i + 1) + ". " + p + "\n";
+            }
+        }
+        return resultado;
+    }
+
+    // Recorre el arreglo y cada producto responde con su propio calcularPrecio()
+    public double calcularValorInventario() {
+        double total = 0;
+        for (int i = 0; i < cantidadProductos; i++) {
+            total = total + productos[i].calcularPrecio() * productos[i].getStock();
+        }
+        return total;
+    }
+
+    public int getCantidadProductos() { return cantidadProductos; }
 
     public Proveedor getProveedor() { return proveedor; }
     public void setProveedor(Proveedor proveedor) { this.proveedor = proveedor; }
 
     public String toString() {
         String texto = "";
-        if (producto1 != null) {
-            texto = texto + "1. " + producto1 + "\n";
+        for (int i = 0; i < cantidadProductos; i++) {
+            texto = texto + (i + 1) + ". " + productos[i] + "\n";
         }
-        if (producto2 != null) {
-            texto = texto + "2. " + producto2 + "\n";
-        }
-        if (producto3 != null) {
-            texto = texto + "3. " + producto3 + "\n";
-        }
-        if (producto4 != null) {
-            texto = texto + "4. " + producto4 + "\n";
-        }
-        if (producto5 != null) {
-            texto = texto + "5. " + producto5 + "\n";
-        }
-        if (producto6 != null) {
-            texto = texto + "6. " + producto6 + "\n";
-        }
-        if (producto7 != null) {
-            texto = texto + "7. " + producto7 + "\n";
-        }
-        if (producto8 != null) {
-            texto = texto + "8. " + producto8 + "\n";
-        }
-
         return texto;
     }
 }

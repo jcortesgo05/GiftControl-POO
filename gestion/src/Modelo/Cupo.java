@@ -1,4 +1,4 @@
-package modelo;
+package Modelo;
 
 // Una casilla de la agenda de producción (cada posición de la matriz es un Cupo)
 public class Cupo {
