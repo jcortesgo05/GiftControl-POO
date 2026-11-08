@@ -30,7 +30,10 @@ public class Papeleria extends Producto {
     public String detalle() {
         return "Papelería tamaño " + (tamano != null ? tamano.toLowerCase() : "no especificado");
     }
-
+    @Override
+    public String[] tecnicasDisponibles() {
+        return new String[]{"Vinilo", "Grabado"};
+    }
     // La papelería se personaliza con vinilo o bordado
     @Override
     public String toString() {
