@@ -18,40 +18,39 @@ public class Personalizacion {
         calcularCosto();
     }
 
-    // Costo de cada técnica (también lo usa la tienda para mostrar las opciones)
-    public static double costoTecnica(String tecnica) {
-        double costo = 0;
-        if (tecnica.equals("Sublimación")) {
-            costo = 5000;
-        } else if (tecnica.equals("Vinilo")) {
-            costo = 7000;
-        } else if (tecnica.equals("Bordado")) {
-            costo = 12000;
-        }
-        return costo;
-    }
-
     // Suma el costo de cada opción elegida
     public void calcularCosto() {
-        double costo = costoTecnica(tecnica);
+        double costo = 0;
 
-        if (tamanoDiseno.equals("Mediano")) {
-            costo = costo + 3000;
-        } else if (tamanoDiseno.equals("Grande")) {
-            costo = costo + 6000;
+        // Validación de Técnica
+        if ("Sublimación".equalsIgnoreCase(tecnica) || "Sublimacion".equalsIgnoreCase(tecnica)) {
+            costo += 5000;
+        } else if ("Vinilo".equalsIgnoreCase(tecnica)) {
+            costo += 7000;
+        } else if ("Bordado".equalsIgnoreCase(tecnica)) {
+            costo += 12000;
         }
 
-        if (tipoContenido.equals("Imagen")) {
-            costo = costo + 4000;
-        } else if (tipoContenido.equals("Texto e imagen")) {
-            costo = costo + 6000;
+        // Validación de Tamaño
+        if ("Mediano".equalsIgnoreCase(tamanoDiseno)) {
+            costo += 3000;
+        } else if ("Grande".equalsIgnoreCase(tamanoDiseno)) {
+            costo += 6000;
         }
 
+        // Validación de Tipo de Contenido
+        if ("Imagen".equalsIgnoreCase(tipoContenido)) {
+            costo += 4000;
+        } else if ("Texto e imagen".equalsIgnoreCase(tipoContenido) || "Texto e Imagen".equalsIgnoreCase(tipoContenido)) {
+            costo += 6000;
+        }
+
+        // Servicio adicional de diseño
         if (servicioDiseno) {
-            costo = costo + 10000;
+            costo += 10000;
         }
 
-        costoAdicional = costo;
+        this.costoAdicional = costo;
     }
 
     public String getTecnica() { return tecnica; }
@@ -83,16 +82,13 @@ public class Personalizacion {
 
     public double getCostoAdicional() { return costoAdicional; }
 
+    @Override
     public String toString() {
-        String servicio;
-        if (servicioDiseno) {
-            servicio = "Sí";
-        } else {
-            servicio = "No";
-        }
+        String servicio = servicioDiseno ? "Sí" : "No";
         return "Técnica: " + tecnica + ", tamaño: " + tamanoDiseno
              + ", contenido: " + tipoContenido + ", servicio de diseño: " + servicio
              + "\n   Descripción: " + descripcion
-             + "\n   Costo adicional: $" + costoAdicional;
+             + "\n   Costo adicional: $" + String.format("%,.0f", costoAdicional);
     }
 }
+  
