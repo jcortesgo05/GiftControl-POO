@@ -19,7 +19,7 @@ public class Cierre {
         ventaMayor = 0;
     }
 
-    // Variables acumuladoras: se llama cada vez que se registra una venta
+
     public void registrar(RegaloPersonalizado regalo) {
         totalRegalos++;
         totalUnidades = totalUnidades + regalo.getCantidad();
