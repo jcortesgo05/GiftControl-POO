@@ -25,11 +25,12 @@ public class Tienda {
         ultimoRegalo = null;
         cierre = new Cierre();
         agenda = new AgendaProduccion();
-        // Productos de ejemplo: cada uno es de una subclase distinta de Producto
-        inventario.agregarProducto(new Accesorio("Taza", 18000, 40, "Cerámica"));
-        inventario.agregarProducto(new Papeleria("Agenda", 35000, 20, "Pequeño"));
-        inventario.agregarProducto(new Textil("Cartuchera", 22000, 15, "Poliéster"));
-        inventario.agregarProducto(new Textil("Monedero", 15000, 25, "Algodón"));
+        
+        inventario.agregarProducto(new Accesorio("Pocillo blanco", 9000, 40, "Cerámica"));
+        inventario.agregarProducto(new Papeleria("Esfero plástico", 3500, 40, "Pequeño"));
+        inventario.agregarProducto(new Textil("Cartuchera", 12000, 40, "Poliéster"));
+        inventario.agregarProducto(new Textil("Monedero", 10000, 40, "Algodón"));
+        inventario.agregarProducto(new Textil("Camiseta básica", 25000, 40, "Algodón"));
     }
 
     public void iniciar() {
@@ -86,7 +87,7 @@ public class Tienda {
         System.out.println("================================");
     }
 
-    // ---- Productos ----
+   
     private void registrarProducto() {
         if (inventario.hayEspacio()) {
             String nombre = leerTexto("Nombre del producto: ");
@@ -105,7 +106,7 @@ public class Tienda {
                 stock = leerEntero("Unidades disponibles: ");
             }
 
-            // Se crea la subclase según la categoría; el inventario la guarda como Producto
+            
             System.out.println("\nCategoría del producto:");
             System.out.println("1. Accesorio (tazas, llaveros, pocillos...)");
             System.out.println("2. Papelería (agendas, esferos...)");
@@ -165,7 +166,7 @@ public class Tienda {
         }
     }
 
-    // Buscador: sin importar mayúsculas, busca en el nombre y la descripción
+    
     private void buscarProductos() {
         if (inventario.getCantidadProductos() == 0) {
             System.out.println("Todavía no hay productos registrados.");
@@ -181,7 +182,7 @@ public class Tienda {
         }
     }
 
-    // ---- Proveedor ----
+   
     private void registrarProveedor() {
         String nombre = leerTexto("Nombre del proveedor: ");
         String telefono = leerTexto("Teléfono: ");
@@ -204,7 +205,7 @@ public class Tienda {
         }
     }
 
-    // ---- Regalo personalizado ----
+    
     private void hacerRegalo() {
         if (inventario.getCantidadProductos() == 0) {
             System.out.println("Primero registra un producto (opción 1).");
@@ -231,7 +232,7 @@ public class Tienda {
     }
 
     private void procesarRegalo(int numero, Producto elegido) {
-        // Validación de disponibilidad: no se puede pedir más de lo que hay
+        
         int cantidad = leerEntero("Cantidad (disponibles: " + elegido.getStock() + "): ");
         while (cantidad < 1 || cantidad > elegido.getStock()) {
             System.out.println("La cantidad debe estar entre 1 y " + elegido.getStock() + ".");
@@ -246,7 +247,7 @@ public class Tienda {
         System.out.println(regalo);
 
         if (leerSiNo("¿Desea continuar con el pedido? (s/n): ")) {
-            // Regla: se pide un abono antes de registrar la venta
+            
             double minimo = regalo.calcularAbonoMinimo();
             System.out.println("Para registrar la venta se requiere un abono mínimo del 30%: $" + minimo);
             int abono = leerEntero("Valor del abono (pesos): ");
@@ -294,7 +295,7 @@ public class Tienda {
         return new Empaque(material, tamano);
     }
 
-    // Las técnicas que se ofrecen dependen del producto elegido (cada subclase las define)
+   
     private String elegirTecnica(Producto elegido) {
         String[] tecnicas = elegido.tecnicasDisponibles();
         System.out.println("\nTécnicas de estampado disponibles para " + elegido.getNombre() + ":");
@@ -326,8 +327,8 @@ public class Tienda {
     private String elegirContenido() {
         System.out.println("\nTipo de contenido:");
         System.out.println("1. Texto (+$0)");
-        System.out.println("2. Imagen (+$4000)");
-        System.out.println("3. Texto e imagen (+$6000)");
+        System.out.println("2. Imagen (+$2000)");
+        System.out.println("3. Texto e imagen (+$3000)");
         String contenido = "";
         while (contenido.length() == 0) {
             int op = leerEntero("Elige (1-3): ");
@@ -447,7 +448,7 @@ public class Tienda {
         return n;
     }
 
-    // Pide un entero hasta que esté entre min y max
+    
     private int leerOpcion(String mensaje, int min, int max) {
         int n = leerEntero(mensaje);
         while (n < min || n > max) {
