@@ -2,9 +2,9 @@ package Modelo;
 
 import Productos.Producto;
 
-// Subclase de Producto: loncheras, cartucheras, monederos, bolsas y otros textiles
+
 public class Textil extends Producto {
-    private String tela; // Poliéster, Algodón o Lona
+    private String tela; 
 
     public Textil(String nombre, double precioBase, int stock, String tela) {
         super(nombre, precioBase, stock);
@@ -14,7 +14,7 @@ public class Textil extends Producto {
     public String getTela() { return tela; }
     public void setTela(String tela) { this.tela = tela; }
 
-    // Regla: el algodón suma $3000 y la lona $5000
+  
     @Override
     public double calcularPrecio() {
         double precio = getPrecioBase();
@@ -31,9 +31,8 @@ public class Textil extends Producto {
         return "Textil de " + tela.toLowerCase();
     }
 
-    // Los textiles admiten las tres técnicas
     @Override
     public String[] tecnicasDisponibles() {
-        return new String[] {"Bordado", "Vinilo", "Sublimación"};
+        return new String[] {"Serigrafia", "DTF", "Sublimación"};
     }
 }
