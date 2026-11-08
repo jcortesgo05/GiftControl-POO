@@ -25,10 +25,11 @@ public class Proveedor {
     public String getSuministra() { return suministra; }
     public void setSuministra(String suministra) { this.suministra = suministra; }
 
+    @Override
     public String toString() {
         return "Proveedor: " + nombre
-             + "\nTeléfono: " + telefono
-             + "\nCorreo: " + correo
-             + "\nSuministra: " + suministra;
+             + " | Teléfono: " + telefono
+             + " | Correo: " + correo
+             + " | Suministra: " + suministra;
     }
 }
