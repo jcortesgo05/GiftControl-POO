@@ -275,7 +275,7 @@ public class Tienda {
         String tecnica = elegirTecnica(elegido);
         String tamano = elegirTamanoDiseno();
         String contenido = elegirContenido();
-        boolean servicio = leerSiNo("¿Requiere servicio de diseño? (+$10000) (s/n): ");
+        boolean servicio = leerSiNo("¿Requiere servicio de diseño? (+$35000) (s/n): ");
 
         String descripcion = leerTexto("Descripción o texto del diseño (máx. 40 caracteres): ");
         while (descripcion.length() > 40) {
@@ -379,8 +379,7 @@ public class Tienda {
         }
         return tamano;
     }
-
-    // ---- Agenda de producción (matriz) ----
+    
     private void menuAgenda() {
         int opcion = 0;
         while (opcion != 6) {
