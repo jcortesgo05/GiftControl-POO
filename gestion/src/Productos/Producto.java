@@ -47,6 +47,6 @@ public abstract class Producto {
         } else {
             disponibilidad = "Agotado";
         }
-        return String.format("%-14s %-30s $%,9.0f  %s", nombre, detalle(), calcularPrecio(), disponibilidad);
+        return String.format("%-16s %-30s $%,9.0f  %s", nombre, detalle(), calcularPrecio(), disponibilidad);
     }
 }
