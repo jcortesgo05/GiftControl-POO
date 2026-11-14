@@ -116,7 +116,7 @@ public class Tienda {
             Producto nuevo = null;
             switch (tipo) {
                 case 1:
-                    System.out.println("\nMaterial: 1. Cerámica   2. Acrílico (+$2000)   3. Metal (+$4000)");
+                    System.out.println("\nMaterial: 1. Cerámica   2. Acrílico (+$2000)   3. Metal (+$3000)");
                     int mat = leerOpcion("Elige (1-3): ", 1, 3);
                     if (mat == 1) {
                         nuevo = new Accesorio(nombre, precio, stock, "Cerámica");
@@ -309,8 +309,8 @@ public class Tienda {
     private String elegirTamanoDiseno() {
         System.out.println("\nTamaño del diseño:");
         System.out.println("1. Pequeño (+$0)");
-        System.out.println("2. Mediano (+$3000)");
-        System.out.println("3. Grande (+$6000)");
+        System.out.println("2. Mediano (+$2000)");
+        System.out.println("3. Grande (+$3000)");
         String tamano = "";
         while (tamano.length() == 0) {
             int op = leerEntero("Elige (1-3): ");
