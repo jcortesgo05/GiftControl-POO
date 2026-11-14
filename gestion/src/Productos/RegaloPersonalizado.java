@@ -25,7 +25,7 @@ public class RegaloPersonalizado {
 
     
     public void calcularPrecio() {
-        precioUnitario = producto.getPrecioBase()
+        precioUnitario = producto.calcularPrecio()
                 + personalizacion.getCostoAdicional()
                 + empaque.getCosto();
         total = precioUnitario * cantidad;
